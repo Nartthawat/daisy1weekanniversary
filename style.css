@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Mali:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Mali', 'Fredoka', cursive; 
+    background-color: #ffe6ec; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #ff6b9e; 
+    
+    /* 🌟 FADE IN ANIMATION FOR EVERY PAGE 🌟 */
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* The Fade Keyframes */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    background-color: #ffffff; 
+    border: 5px solid #ffb3c6; 
+    border-radius: 30px;
+    padding: 60px 40px;
+    text-align: center;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 15px 40px rgba(255, 179, 198, 0.4); 
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    color: #ff6b9e;
+    font-weight: 700; 
+}
+
+header p {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    opacity: 0.9;
+    color: #ff8fb3;
+}
+
+.gifts-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.gift-card {
+    background-color: #ff7aa2; /* 💖 Darker, richer pink for the buttons */
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1; 
+    width: 30%; 
+    max-width: 280px; 
+}
+
+.gift-img {
+    width: 75%; 
+    height: 75%;
+    object-fit: contain; 
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.gift-card:hover {
+    transform: scale(1.05);
+    background-color: #ff5c8a; /* 💖 Even darker pink when hovering */
+    box-shadow: 0 20px 40px rgba(255, 92, 138, 0.4);
+}
+
+.gift-card:hover .gift-img {
+    transform: scale(1.1);
+}
+
+.gift-card:active {
+    transform: scale(0.98);
+}
+
+.glow {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.gift-card:hover .glow {
+    opacity: 1;
+    animation: heartGlow 1.5s infinite alternate;
+}
+
+@keyframes heartGlow {
+    0% { transform: scale(0.9); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
+.for-daisy {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ff8fb3;
+}
+
+/* 🌟 CUSTOM BACK BUTTON STYLES 🌟 */
+.floating-back-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background-color: #ff7aa2; /* Matches the dark pink cards */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(255, 122, 162, 0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-back-btn:hover {
+    transform: scale(1.1);
+    background-color: #ff5c8a;
+}
+
+.back-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Page content for the gift pages */
+.message-container h2 {
+    color: #ff6b9e;
+    font-size: 2.5rem;
+    margin: 20px 0 15px 0;
+}
+
+.message-container .message-text {
+    color: #ff8fb3;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .container { padding: 40px 20px; }
+    header h1 { font-size: 2.2rem; }
+    header p { font-size: 1.2rem; margin-bottom: 30px; }
+    .gifts-grid { flex-direction: column; gap: 25px; }
+    .gift-card { width: 75%; max-width: 300px; }
+    .for-daisy { font-size: 1.4rem; }
+    
+    /* Adjust back button for phones */
+    .floating-back-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+    }
+    .back-icon { width: 30px; height: 30px; }
+}
+
+/* 🌟 FULL SCREEN GALLERY LAYOUT 🌟 */
+
+.gallery-container {
+    width: 95%; /* Almost full screen width */
+    max-width: 1400px; /* Allows it to get very wide on computers */
+    padding: 30px;
+    height: 90vh; /* Takes up 90% of the screen height */
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    gap: 20px;
+}
+
+/* 🌟 SIDE GALLERIES (Grid for Polaroids) 🌟 */
+.side-gallery {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns of polaroids */
+    gap: 20px;
+    align-content: center; /* Centers them vertically */
+    padding: 20px;
+}
+
+/* 🌟 FIXED POLAROID TEXT (No more overlapping) 🌟 */
+.polaroid-small {
+    background: #db7093; 
+    padding: 12px; /* Normal padding all around */
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(219, 112, 147, 0.4);
+    position: relative;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.polaroid-small:hover {
+    transform: scale(1.1) !important;
+    z-index: 10;
+}
+
+.polaroid-small img {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover;
+    border: 2px solid #ffb3c6; 
+    border-radius: 4px;
+    display: block;
+}
+
+.polaroid-small p {
+    font-family: 'Mali', cursive;
+    color: #ffffff;
+    font-size: 0.95rem; /* Adjusted slightly to fit nicely */
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    margin-top: 10px; /* Pushes text below the image perfectly */
+}
+
+
+/* 🌟 FIXED CENTER STRIP & SLOT MACHINE 🌟 */
+.center-strip-wrapper {
+    width: 180px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden; /* Hides anything outside this box */
+    border-radius: 20px;
+    background-color: rgba(255, 179, 198, 0.1); /* Very subtle background */
+}
+
+/* New Cover: Blocks out the top so pictures don't show above the hole */
+.slot-machine-cover {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 40px; /* Height of the block hiding the pictures */
+    background-color: #ffffff; /* Matches your main container's white background */
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 5px;
+}
+
+.slot-hole {
+    width: 120px;
+    height: 8px;
+    background-color: #222; 
+    border-radius: 10px;
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.8); /* Makes the hole look deep */
+}
+
+/* The moving strip */
+.scrolling-strip {
+    background-color: #db7093; 
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+    margin-top: 40px; /* Pushes the strip below the solid white cover */
+    animation: scrollUp 15s linear infinite;
+}
+
+/* This grouping guarantees a perfect, glitch-free loop */
+.strip-set {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between photos */
+    padding-bottom: 10px; /* Crucial: Matches the gap so the loop is flawless */
+}
+
+.film-frame img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 2px solid #ffb3c6;
+    border-radius: 4px;
+    display: block;
+}
+
+@keyframes scrollUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); } 
+}
+
+/* Responsiveness for iPad/Phones */
+@media (max-width: 900px) {
+    .gallery-layout { flex-direction: column; overflow-y: auto; overflow-x: hidden; }
+    .center-strip-wrapper { width: 100%; height: 300px; margin: 20px 0; }
+    .scrolling-strip { flex-direction: row; animation: scrollLeft 15s linear infinite; width: max-content; margin-top: 0; }
+    .strip-set { flex-direction: row; padding-bottom: 0; padding-right: 10px; }
+    .slot-machine-cover { display: none; } /* Hide slot on mobile horizontal scroll */
+    @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .film-frame img { width: 150px; height: 150px; }
+}
+
+/* 🌟 LETTER PAGE STYLES 🌟 */
+
+.letter-container {
+    max-width: 1100px;
+    padding: 50px 40px;
+}
+
+.letter-layout {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+/* Left Side: Pictures */
+.letter-pictures {
+    flex: 0 0 300px; /* Keeps the picture column exactly 300px wide */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.letter-pic {
+    background: #db7093; /* Matches the dark pink frame */
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(219, 112, 147, 0.4);
+}
+
+.letter-pic img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Makes them perfect squares */
+    object-fit: cover;
+    border: 2px solid #ffb3c6;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Right Side: Text */
+.letter-content {
+    flex: 1;
+    text-align: left;
+}
+
+.letter-content h2 {
+    color: #ff6b9e;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.typed-letter {
+    font-family: 'Mali', cursive;
+    color: #ff5c8a;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    font-weight: 600;
+    min-height: 400px; /* Prevents the page from jumping around while typing */
+}
+
+/* The Blinking Typewriter Cursor */
+.typed-letter::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: #ff6b9e;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Responsiveness for iPad and Phones */
+@media (max-width: 900px) {
+    .letter-layout {
+        flex-direction: column;
+    }
+    .letter-pictures {
+        flex: auto;
+        width: 100%;
+        flex-direction: row; /* Puts the two pictures side-by-side on mobile */
+    }
+    .letter-pic {
+        flex: 1;
+    }
+    .letter-content {
+        margin-top: 10px;
+    }
+    .letter-content h2 {
+        font-size: 1.8rem;
+    }
+    .typed-letter {
+        font-size: 1.1rem;
+    }
+}
+
+/* 🌟 FLOWER PAGE STYLES 🌟 */
+
+.flower-container {
+    max-width: 1100px;
+    padding: 50px 40px;
+}
+
+.flower-layout {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Left: Animated Flowers */
+.flower-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.swaying-flowers {
+    width: 80%;
+    max-width: 350px;
+    /* This applies the swaying animation */
+    animation: sway 3s ease-in-out infinite;
+    transform-origin: bottom center; /* Swings from the bottom stem */
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+/* Right: Music Side */
+.music-side {
+    flex: 1;
+    text-align: center;
+}
+
+.music-side h2 {
+    color: #ff6b9e;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    background: #ffb3c6;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(219, 112, 147, 0.3);
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 315px;
+    border-radius: 10px;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+    .flower-layout { flex-direction: column; }
+    .swaying-flowers { max-width: 250px; }
+}

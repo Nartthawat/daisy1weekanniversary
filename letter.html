@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter for Daisy 💌</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container letter-container">
+        
+        <div class="letter-layout">
+            <!-- 🌟 LEFT SIDE: TWO PICTURES 🌟 -->
+            <div class="letter-pictures">
+                <!-- Change the src to your chosen pictures -->
+                <div class="letter-pic">
+                    <img src="us4.jpg" alt="Us 1">
+                </div>
+                <div class="letter-pic">
+                    <img src="us7.jpg" alt="Us 2">
+                </div>
+            </div>
+
+            <!-- 🌟 RIGHT SIDE: THE LETTER 🌟 -->
+            <div class="letter-content">
+                <h2>HAPPY 1 WEEK, MY LOVE! 💖</h2>
+                
+                <!-- The JavaScript will type the letter into this box -->
+                <div id="typewriter-text" class="typed-letter"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- The Floating Back Button -->
+    <a href="index.html" class="floating-back-btn">
+        <img src="back.png" alt="Back" class="back-icon">
+    </a>
+
+    <!-- 🌟 THE TYPEWRITER JAVASCRIPT 🌟 -->
+    <script>
+        // 👉 TYPE YOUR LETTER HERE! 
+        // Use \n to make a new line/paragraph.
+        const myLetter = `ถึงเดซี่ที่รักของเค้า, 
+
+วันนี้ก็วันครบรอบ 1 สัปดาห์ของเราสองคนแล้วนะ เอาจริงๆเอิร์ธรู้สึกว่าเรื่องราวของเรามันพัฒนาขึ้นมาไวมากๆเลยนะ ตั้งแต่เราเริ่มรู้จักกัน เธอทำให้เค้ารู้สึกว่าชีวิตมันมีความหมายมากขึ้น
+
+เค้ายังคงตื่นเต้นเสมอทุกครั้งที่ได้เจอเธอ ได้คุยกับเธอ ได้เห็นรอยยิ้มของเธอ มันทำให้เค้ารู้สึกว่าชีวิตนี้มันมีความสุขมากๆเลย อยากจะอยู่ถ่ายรูปคู่กับเธอทุกวันเลยนะ และเค้าก็อยากจะบอกเธอว่าเค้ารักเธอมากๆเลยนะ รักมากกว่าที่เค้าจะบรรยายออกมาเป็นคำพูดได้เลย
+
+และเค้าก็อยากจะขอโทษที่บางครั้งเค้าอาจจะทำให้เธอรู้สึกเสียใจ รู้สึกไม่ดีบ้าง แต่เค้าก็อยากให้เธอรู้ว่าเค้ารักเธอมากๆนะ และเค้าจะพยายามเป็นคนที่ดีกว่านี้เพื่อเธอเสมอ`;
+
+        // The animation engine
+        const textElement = document.getElementById("typewriter-text");
+        let i = 0;
+
+        function typeWriter() {
+            if (i < myLetter.length) {
+                // If it sees a \n, it turns it into an HTML line break
+                if (myLetter.charAt(i) === '\n') {
+                    textElement.innerHTML += '<br>';
+                } else {
+                    textElement.innerHTML += myLetter.charAt(i);
+                }
+                i++;
+                // 50 is the speed. Lower = faster, Higher = slower!
+                setTimeout(typeWriter, 35); 
+            }
+        }
+
+        // Wait a tiny bit after the page fades in before starting to type
+        window.onload = () => {
+            setTimeout(typeWriter, 800); 
+        };
+    </script>
+</body>
+</html>
